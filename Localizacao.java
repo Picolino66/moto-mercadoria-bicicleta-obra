@@ -54,6 +54,29 @@ public class Localizacao {
             return novaLocalizacao;
         }
     }
+
+    public Localizacao mudarRota(Localizacao localizacaoDestino){
+        int destX = localizacaoDestino.getX();
+        int destY = localizacaoDestino.getY();
+        int deslocX = 0;
+        int deslocY = 0;
+        if (x+1 == destX && y == destY){
+            deslocX = x + 1;
+            deslocY = y + 1;
+        }else if(x-1 == destX && y == destY){
+            deslocX = x -1;
+            deslocY = y + 1;
+        }else if(x == destX && y+1== destY){
+            deslocX = x + 1;
+            deslocY = y + 1;
+        }else{
+            deslocX = x + 1;
+            deslocY = y - 1;
+        }
+        Localizacao novaLocalizacao;
+        novaLocalizacao = new Localizacao(deslocX, deslocY);
+        return novaLocalizacao;
+    }
     
     /**
      * Verificacao de igualdade de conteudo de objetos do tipo Localizacao.

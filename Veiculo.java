@@ -39,9 +39,12 @@ public class Veiculo extends Item{
         Localizacao destino = getLocalizacaoDestino();
         if(destino != null){
             Localizacao proximaLocalizacao = getLocalizacaoAtual().proximaLocalizacao(destino);
-            while(this.temObra(obras, proximaLocalizacao)){
-                proximaLocalizacao = getLocalizacaoAtual().proximaLocalizacao(destino);
+
+            Obra ob = this.temObra(obras, proximaLocalizacao);
+            if(ob != null){
+                proximaLocalizacao = getLocalizacaoAtual().mudarRota(ob.getLocalizacaoAtual());
             }
+            
             setLocalizacaoAtual(proximaLocalizacao);
             if(mercadoria != null && foiEntregue()){//Se o veiculo tem uma mercadoria e chegou o ponto de entrega
                 descarregaMercadoria();             //Então descarrega a mercadoria
@@ -72,13 +75,12 @@ public class Veiculo extends Item{
         return mercadoria == null && getLocalizacaoDestino() == null;
     }
 
-    private boolean temObra(ArrayList<Obra> obras, Localizacao proximaLocalizacao){
-        boolean saida = false;
+    private Obra temObra(ArrayList<Obra> obras, Localizacao proximaLocalizacao){
         for (Obra obra : obras) {
-            if (obra.getLocalizacaoAtual() == proximaLocalizacao){
-                saida = true;
+            if (obra.getLocalizacaoAtual().equals(proximaLocalizacao)){
+                return obra;
             }
         }
-        return saida;
+        return null;
     }
 }

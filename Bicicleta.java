@@ -34,7 +34,7 @@ public class Bicicleta extends Item{
             Random rand = new Random();
             Localizacao destino = new Localizacao(rand.nextInt(this.limX),rand.nextInt(this.limY));
             Localizacao proximaLocalizacao = getLocalizacaoAtual().proximaLocalizacao(destino);
-            while(pos == proximaLocalizacao){
+            while(pos.equals(proximaLocalizacao)){
                 destino = new Localizacao(rand.nextInt(this.limX),rand.nextInt(this.limY));
                 proximaLocalizacao = getLocalizacaoAtual().proximaLocalizacao(destino);
             }
