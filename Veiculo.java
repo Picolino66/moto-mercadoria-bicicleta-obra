@@ -31,13 +31,10 @@ public class Veiculo extends Item{
         this.localizacaoDestino = localizacaoDestino;
     }
     
-    /**************ALTEREI************************/
     public void limpaLocalizacaoDestino(){
         localizacaoDestino = null;
     }
     
-    /**************ALTEREI************************/
-    //Ação
     public Localizacao executarAcao(ArrayList<Obra> obras){
         Localizacao destino = getLocalizacaoDestino();
         if(destino != null){
@@ -58,18 +55,15 @@ public class Veiculo extends Item{
         setLocalizacaoDestino(localizacao);
     }
 
-    /**************ALTEREI************************/
     public void recebeMercadoria(Mercadoria mercadoria){
         this.mercadoria = mercadoria;
         setLocalizacaoDestino(mercadoria.getLocalizacaoDestino());
     }
 
-    /**************ALTEREI************************/
     public void descarregaMercadoria(){
         mercadoria = null;
         limpaLocalizacaoDestino();
     }
-    /**************ALTEREI************************/
     public boolean foiEntregue(){
         return mercadoria.getLocalizacaoDestino() == getLocalizacaoAtual();
     }

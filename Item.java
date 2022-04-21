@@ -1,7 +1,6 @@
 import java.awt.Image;
 import java.util.ArrayList;
-/**************ALTEREI************************/
-//Criei uma Classe Item pra facilita na manipulação do mapa
+
 public abstract class Item{
     private Localizacao localizacaoAtual;
 
@@ -21,7 +20,4 @@ public abstract class Item{
     public abstract Image getImagem();
 
     public abstract Localizacao executarAcao(ArrayList<Obra> obras);
-
-
-
 }
